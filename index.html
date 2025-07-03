@@ -31,10 +31,343 @@
             opacity: 0 !important;
             pointer-events: none;
         }
+
+        /* Enhanced Smooth Animations */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Smooth transitions for all interactive elements */
+        a, button, .nav-link, .works-link-wrapper, .button-with-circle-icon {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Enhanced navbar animations */
+        .navbar {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #000, transparent);
+            transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        /* Hero section enhancements */
+        .hero-section {
+            overflow: hidden;
+        }
+
+        .hero-text {
+            background: linear-gradient(45deg, #000, #333, #000);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .arrow-border-wrapper {
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .arrow-border-wrapper:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .arrow {
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .arrow-border-wrapper:hover .arrow {
+            transform: translate(3px, -3px) rotate(15deg);
+        }
+
+        /* Floating animations for decorative elements */
+        .fingerprint {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle {
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Enhanced works section */
+        .works-title {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .works-block {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .works-block:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .parallax-image {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .works-block:hover .parallax-image {
+            transform: scale(1.05);
+        }
+
+        .works-badge {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .works-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Enhanced pricing cards */
+        .pricing-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .featured-pricing {
+            position: relative;
+        }
+
+        .featured-pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .featured-pricing:hover::before {
+            opacity: 1;
+        }
+
+        /* Button enhancements */
+        .button-primary, .button-with-circle-icon {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .button-primary::before, .button-with-circle-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .button-primary:hover::before, .button-with-circle-icon:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .button-primary:hover, .button-with-circle-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Metrics animation */
+        .metrics-text {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .metrics-block:hover .metrics-text {
+            transform: scale(1.1);
+            color: #007bff;
+        }
+
+        /* Testimonial card enhancement */
+        .testimonial-card-three {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 20px;
+        }
+
+        .testimonial-card-three:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        /* CTA section enhancement */
+        .cta-large {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .cta-block:hover .cta-large {
+            transform: translateX(10px);
+        }
+
+        .arrow-image-small {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .cta-block:hover .arrow-image-small {
+            transform: rotate(45deg) scale(1.2);
+        }
+
+        /* Social icons enhancement */
+        .social-icon {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            filter: grayscale(100%);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        /* Scroll-triggered animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-left.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-right.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Stagger animation delays */
+        .fade-in-up:nth-child(1) { transition-delay: 0.1s; }
+        .fade-in-up:nth-child(2) { transition-delay: 0.2s; }
+        .fade-in-up:nth-child(3) { transition-delay: 0.3s; }
+        .fade-in-up:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Enhanced spline viewer */
+        .spline {
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Performance optimizations */
+        .parallax-image, .works-image-wrapper img {
+            will-change: transform;
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" data-w-id="06ab6c64-468c-b44e-1b8c-856deb96ba7f" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
         <a href="/" aria-current="page" class="logo-link-wrapper w-nav-brand w--current">
             <img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1).png"
@@ -66,10 +399,10 @@
         <div class="fingerprint"></div>
         <div class="circle"></div>
         <div class="w-layout-blockcontainer container w-container">
-            <div class="hero-wrapper">
-                <h5 class="heading">Welcome</h5>
-                <h1 class="hero-text">Verisqo</h1>
-                <a href="#brands" class="arrow-border-wrapper w-inline-block">
+            <div class="hero-wrapper fade-in-up">
+                <h5 class="heading fade-in-up">Welcome</h5>
+                <h1 class="hero-text fade-in-up">Verisqo</h1>
+                <a href="#brands" class="arrow-border-wrapper w-inline-block fade-in-up">
                     <div data-w-id="022bdf7a-1da5-487f-e90a-10a13619b2dd" class="icon-wrapper">
                         <img width="Auto" height="Auto" alt="arrow up" 
                              src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686629ace1541d797a1631e1_arrow_outward.svg" 
@@ -86,16 +419,16 @@
     <section id="brands" class="section">
         <div class="w-layout-blockcontainer container padding-4-5rem w-container">
             <div class="space-7rem"></div>
-            <div class="brands-wrapper"></div>
+            <div class="brands-wrapper fade-in-up"></div>
         </div>
     </section>
     <div data-w-id="c0e2f789-3698-9dfa-1a86-5a69e48b275c" style="opacity:0" class="spark-section">
         <div class="spark-container w-container">
-            <div class="spark-centered-900">
+            <div class="spark-centered-900 fade-in-up">
                 <h2>SERVICES WE OFFER</h2>
                 <p class="spark-secondary-paragraph">FOUNDED BY RUSHAL</p>
             </div>
-            <div data-current="Tab 1" data-easing="linear" data-duration-in="300" data-duration-out="100" class="spark-side-flat-tab-parent w-tabs">
+            <div data-current="Tab 1" data-easing="linear" data-duration-in="300" data-duration-out="100" class="spark-side-flat-tab-parent w-tabs fade-in-up">
                 <div class="spark-stacked-icon-tabs w-tab-menu">
                     <a data-w-tab="Tab 1" class="spark-side-icon-tab w-inline-block w-tab-link w--current">
                         <div class="spark-flex-center spark-margin-bottom-16px">
@@ -112,7 +445,7 @@
                 <div class="spark-side-tabs-content w-tab-content">
                     <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
                         <div data-w-id="c0e2f789-3698-9dfa-1a86-5a69e48b277c" style="opacity:0" class="spark-two-column-grid">
-                            <div class="spark-wrapped-card spark-stacked">
+                            <div class="spark-wrapped-card spark-stacked fade-in-left">
                                 <a href="#" class="w-inline-block">
                                     <img width="80" sizes="80px" alt="Student Dashboard" 
                                          src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686659e4a0cbf2aeb3b14193_Screenshot%202025-07-03%20155141.png" 
@@ -125,7 +458,7 @@
                                     <p class="spark-small-sub-paragraph">Organize classes, track goals, manage tasks, and build habits — all in one Notion setup. Zero setup required.</p>
                                 </div>
                             </div>
-                            <div class="spark-wrapped-card spark-stacked">
+                            <div class="spark-wrapped-card spark-stacked fade-in-right">
                                 <a href="#" class="w-inline-block">
                                     <img width="80" sizes="80px" alt="Daily System" 
                                          src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686659e4d7127165107400fa_Screenshot%202025-07-03%20155135.png" 
@@ -147,7 +480,7 @@
     <section id="works" class="section">
         <div class="w-layout-blockcontainer container w-container">
             <div class="space-7rem"></div>
-            <div data-w-id="4bf48e95-1b6f-5737-3242-d95977d5bf77" class="works-title-wrapper">
+            <div data-w-id="4bf48e95-1b6f-5737-3242-d95977d5bf77" class="works-title-wrapper fade-in-up">
                 <h2 class="works-title">My Works</h2>
                 <h2 class="works-title outline-white">My Works</h2>
                 <h2 class="works-title">My Works</h2>
@@ -160,7 +493,7 @@
             <div class="space-4rem"></div>
             <div class="slide-up-animation">
                 <div class="works-wrapper">
-                    <div data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13b" class="works-block">
+                    <div data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13b" class="works-block fade-in-up">
                         <a data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13c" href="#" class="works-link-wrapper w-inline-block">
                             <div class="works-image-wrapper">
                                 <img loading="lazy" alt="Student Dashboard Design" 
@@ -178,7 +511,7 @@
                             </div>
                         </div>
                     </div>
-                    <div data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13b" class="works-block">
+                    <div data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13b" class="works-block fade-in-up">
                         <a data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13c" href="#" class="works-link-wrapper w-inline-block">
                             <div class="works-image-wrapper">
                                 <img loading="lazy" alt="Career Kit" 
@@ -196,7 +529,7 @@
                             </div>
                         </div>
                     </div>
-                    <div data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13b" class="works-block">
+                    <div data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13b" class="works-block fade-in-up">
                         <a data-w-id="cdd86b2f-751d-506f-06f5-7a0831b8e13c" href="#" class="works-link-wrapper w-inline-block">
                             <div class="works-image-wrapper">
                                 <img loading="lazy" alt="Documents Hub" 
@@ -221,16 +554,16 @@
     <section class="section">
         <div class="w-layout-blockcontainer container padding-9rem w-container">
             <div class="space-7rem"></div>
-            <div class="metrics-wrapper">
-                <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddef3" class="metrics-block">
+            <div class="metrics-wrapper fade-in-up">
+                <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddef3" class="metrics-block fade-in-up">
                     <h2 class="metrics-text">124</h2>
                     <p>Customers</p>
                 </div>
-                <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddef8" class="metrics-block">
+                <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddef8" class="metrics-block fade-in-up">
                     <h2 class="metrics-text">7</h2>
                     <p>Awards</p>
                 </div>
-                <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddefd" class="metrics-block">
+                <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddefd" class="metrics-block fade-in-up">
                     <h2 class="metrics-text">85</h2>
                     <p>Projects</p>
                 </div>
@@ -240,8 +573,8 @@
     </section>
     <section data-w-id="7ec3b923-a2ca-adaf-de58-ed2ee18ccddb" style="opacity:0" class="pricing-comparison">
         <div class="container-2">
-            <div class="pricing-wrapper">
-                <div class="pricing-card">
+            <div class="pricing-wrapper fade-in-up">
+                <div class="pricing-card fade-in-left">
                     <img src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124a28a812aad9_placeholder%202.svg" loading="lazy" alt="" class="pricing-image" />
                     <h2 class="pricing-title">Starter</h2>
                     <div class="pricing-subtitle">Starting at</div>
@@ -258,7 +591,7 @@
                         <li><div class="pricing-feature">Clean Notion template</div></li>
                     </ul>
                 </div>
-                <div class="pricing-card featured-pricing">
+                <div class="pricing-card featured-pricing fade-in-up">
                     <img src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124a867e12aade_portfolio%201%20-%20wide.svg" loading="lazy" alt="" class="pricing-image" />
                     <h2 class="pricing-title">Core</h2>
                     <div class="pricing-subtitle">Starting at</div>
@@ -277,7 +610,7 @@
                     </ul>
                     <div class="pricing-tag">Recommended</div>
                 </div>
-                <div class="pricing-card">
+                <div class="pricing-card fade-in-right">
                     <img src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124a55c612aae2_portfolio%202%20-%20wide.svg" loading="lazy" alt="" class="pricing-image" />
                     <h2 class="pricing-title"><strong>Pro</strong></h2>
                     <div class="pricing-subtitle">Starting at</div>
@@ -299,7 +632,7 @@
     </section>
     <section id="about" class="testimonial-stack">
         <div class="container-2">
-            <div data-w-id="aa80914c-c7bd-075e-c3a3-785aecd61200" style="opacity:0" class="testimonial-card-three">
+            <div data-w-id="aa80914c-c7bd-075e-c3a3-785aecd61200" style="opacity:0" class="testimonial-card-three fade-in-up">
                 <div class="testimonial-card-content">
                     <h3 class="testimonial-card-heading">ABOUT US</h3>
                     <p class="testimonial-text-three">
@@ -318,7 +651,7 @@
     </section>
     <section id="contact" class="section">
         <div class="w-layout-blockcontainer container padding-9rem w-container">
-            <div data-w-id="6e9750ff-a872-9aa1-2869-bd0dc16b00f1" class="cta-block">
+            <div data-w-id="6e9750ff-a872-9aa1-2869-bd0dc16b00f1" class="cta-block fade-in-up">
                 <div class="cta-text-block">
                     <h5>Contact me</h5>
                     <div class="flex">
@@ -344,7 +677,7 @@
     <section class="section background-black">
         <div class="w-layout-blockcontainer container padding-9rem w-container">
             <div class="space-2rem"></div>
-            <div data-w-id="fa36639f-bc34-8f1a-4024-d088998077f8" class="footer-top">
+            <div data-w-id="fa36639f-bc34-8f1a-4024-d088998077f8" class="footer-top fade-in-up">
                 <div class="footer-block">
                     <a href="/" aria-current="page" class="footer-logo-link-wrapper w-nav-brand w--current"></a>
                     <div class="socials-wrapper">
@@ -400,7 +733,7 @@
                 </div>
             </div>
             <div data-w-id="fa36639f-bc34-8f1a-4024-d0889980784b" class="footer-line"></div>
-            <div data-w-id="fa36639f-bc34-8f1a-4024-d0889980784c" class="footer-bottom">
+            <div data-w-id="fa36639f-bc34-8f1a-4024-d0889980784c" class="footer-bottom fade-in-up">
                 <p class="font-white">© 2025 Versiqo. All Rights Reserved.</p>
                 <div class="footer-flex">
                     <div class="footer-flex-bottom">
@@ -413,10 +746,192 @@
             </div>
         </div>
     </section>
+
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js" type="module"></script>
     <script src="https://cdn.prod.website-files.com/686629ace1541d797a163149/js/webflow.schunk.57d5559d2f0cd9f8.js" type="text/javascript"></script>
     <script src="https://cdn.prod.website-files.com/686629ace1541d797a163149/js/webflow.schunk.2f6085c01711e8aa.js" type="text/javascript"></script>
     <script src="https://cdn.prod.website-files.com/686629ace1541d797a163149/js/webflow.7c489779.2db4652adc9181ba.js" type="text/javascript"></script>
+
+    <script>
+        // Enhanced Animation Controller
+        class AnimationController {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.setupLoadingAnimation();
+                this.setupScrollAnimations();
+                this.setupParallaxEffects();
+                this.setupSmoothScrolling();
+                this.setupInteractionAnimations();
+            }
+
+            setupLoadingAnimation() {
+                window.addEventListener('load', () => {
+                    const loadingOverlay = document.getElementById('loadingOverlay');
+                    setTimeout(() => {
+                        loadingOverlay.classList.add('hidden');
+                        this.triggerInitialAnimations();
+                    }, 800);
+                });
+            }
+
+            triggerInitialAnimations() {
+                const heroElements = document.querySelectorAll('.hero-wrapper .fade-in-up');
+                heroElements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('animate');
+                    }, index * 200);
+                });
+            }
+
+            setupScrollAnimations() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all animation elements
+                const animationElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+                animationElements.forEach(el => observer.observe(el));
+            }
+
+            setupParallaxEffects() {
+                let ticking = false;
+
+                const updateParallax = () => {
+                    const scrolled = window.pageYOffset;
+                    const parallaxElements = document.querySelectorAll('.parallax-image');
+                    
+                    parallaxElements.forEach(el => {
+                        const rate = scrolled * -0.5;
+                        el.style.transform = `translateY(${rate}px)`;
+                    });
+
+                    // Floating elements
+                    const fingerprint = document.querySelector('.fingerprint');
+                    const circle = document.querySelector('.circle');
+                    
+                    if (fingerprint) {
+                        fingerprint.style.transform = `translateY(${scrolled * 0.3}px) rotate(${scrolled * 0.1}deg)`;
+                    }
+                    
+                    if (circle) {
+                        circle.style.transform = `translateY(${scrolled * -0.2}px) rotate(${scrolled * -0.05}deg)`;
+                    }
+
+                    ticking = false;
+                };
+
+                const requestTick = () => {
+                    if (!ticking) {
+                        requestAnimationFrame(updateParallax);
+                        ticking = true;
+                    }
+                };
+
+                window.addEventListener('scroll', requestTick, { passive: true });
+            }
+
+            setupSmoothScrolling() {
+                // Enhanced smooth scrolling for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+            }
+
+            setupInteractionAnimations() {
+                // Enhanced button interactions
+                const buttons = document.querySelectorAll('.button-primary, .button-with-circle-icon');
+                buttons.forEach(button => {
+                    button.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-3px) scale(1.02)';
+                    });
+                    
+                    button.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0) scale(1)';
+                    });
+                });
+
+                // Works block hover effects
+                const worksBlocks = document.querySelectorAll('.works-block');
+                worksBlocks.forEach(block => {
+                    block.addEventListener('mouseenter', function() {
+                        const image = this.querySelector('.parallax-image');
+                        if (image) {
+                            image.style.transform = 'scale(1.08)';
+                        }
+                    });
+                    
+                    block.addEventListener('mouseleave', function() {
+                        const image = this.querySelector('.parallax-image');
+                        if (image) {
+                            image.style.transform = 'scale(1)';
+                        }
+                    });
+                });
+
+                // Metrics counter animation
+                const metricsBlocks = document.querySelectorAll('.metrics-block');
+                metricsBlocks.forEach(block => {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                this.animateCounter(entry.target);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    });
+                    observer.observe(block);
+                });
+            }
+
+            animateCounter(block) {
+                const numberElement = block.querySelector('.metrics-text');
+                const finalNumber = parseInt(numberElement.textContent);
+                let currentNumber = 0;
+                const increment = finalNumber / 50;
+                const timer = setInterval(() => {
+                    currentNumber += increment;
+                    if (currentNumber >= finalNumber) {
+                        numberElement.textContent = finalNumber;
+                        clearInterval(timer);
+                    } else {
+                        numberElement.textContent = Math.floor(currentNumber);
+                    }
+                }, 40);
+            }
+        }
+
+        // Initialize animations when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new AnimationController();
+        });
+
+        // Performance optimization
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (prefersReducedMotion.matches) {
+            document.documentElement.style.setProperty('--animation-duration', '0.01s');
+        }
+    </script>
 </body>
 </html>
