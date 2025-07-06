@@ -1,1307 +1,635 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-wf-domain="testingvercico" data-wf-page="686629ace1541d797a1631a4" data-wf-site="686629ace1541d797a163149" data-wf-status="1" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Versiqo - Advanced AI Solutions</title>
-    <meta name="description" content="Transform your business with cutting-edge AI solutions. Versiqo delivers intelligent automation, data analytics, and machine learning services.">
-    <meta name="keywords" content="AI, artificial intelligence, machine learning, automation, data analytics, business solutions">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>Versico – A Calm System for Student Life</title>
+    <meta content="Versico helps students manage routines, career goals, budgeting, and personal life—all in one minimal, distraction-free space." name="description" />
+    <meta content="Versico – A Calm System for Student Life" property="og:title" />
+    <meta content="Versico helps students manage routines, career goals, budgeting, and personal life—all in one minimal, distraction-free space." property="og:description" />
+    <meta content="https://cdn.prod.website-files.com/686629ace1541d797a163149/686773a71a2e0ca1a9f24266_Screenshot%202025-07-04%20115411.png" property="og:image" />
+    <meta content="Versico – A Calm System for Student Life" property="twitter:title" />
+    <meta content="Versico helps students manage routines, career goals, budgeting, and personal life—all in one minimal, distraction-free space." property="twitter:description" />
+    <meta property="og:type" content="website" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Webflow" name="generator" />
+    <link href="https://cdn.prod.website-files.com/686629ace1541d797a163149/css/testingvercico.webflow.shared.013042254.css" rel="stylesheet" type="text/css" />
     <style>
-        :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary-color: #8b5cf6;
-            --accent-color: #06b6d4;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --text-light: #9ca3af;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-dark: #111827;
-            --border-color: #e5e7eb;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-primary);
-            overflow-x: hidden;
-        }
-
-        /* Loading Animation */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-primary);
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border-top: 1px solid var(--border-color);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .mobile-menu.active {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .mobile-nav-links {
-            list-style: none;
-            padding: 1rem 0;
-        }
-
-        .mobile-nav-links li {
-            padding: 0.75rem 2rem;
-        }
-
-        .mobile-nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            display: block;
-            transition: color 0.3s ease;
-        }
-
-        .mobile-nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.5s forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        @media (min-width:992px) {
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="022bdf7a-1da5-487f-e90a-10a13619b2de"] {
+                -webkit-transform: translate3d(0rem, 0rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0rem, 0rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0rem, 0rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0rem, 0rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
             }
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff, #e0e7ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary-color);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 1rem 2rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .hero-image {
-            position: relative;
-            opacity: 0;
-            transform: translateX(30px);
-            animation: fadeInRight 1s ease 0.7s forwards;
-        }
-
-        @keyframes fadeInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbb98"] {
+                opacity: 0;
             }
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: var(--shadow-xl);
-            transition: transform 0.3s ease;
-        }
-
-        .hero-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            opacity: 0.1;
-            animation: floatRandom 15s ease-in-out infinite;
-        }
-
-        .floating-element:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-element:nth-child(2) {
-            top: 60%;
-            right: 15%;
-            animation-delay: 5s;
-        }
-
-        .floating-element:nth-child(3) {
-            bottom: 30%;
-            left: 20%;
-            animation-delay: 10s;
-        }
-
-        @keyframes floatRandom {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, -20px) rotate(90deg); }
-            50% { transform: translate(-15px, 15px) rotate(180deg); }
-            75% { transform: translate(25px, 10px) rotate(270deg); }
-        }
-
-        /* Features Section */
-        .features {
-            padding: 6rem 0;
-            background: var(--bg-secondary);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .section-header.animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(30px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-card.animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .feature-card:nth-child(2) { animation-delay: 0.1s; }
-        .feature-card:nth-child(3) { animation-delay: 0.2s; }
-        .feature-card:nth-child(4) { animation-delay: 0.3s; }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .feature-icon svg {
-            width: 30px;
-            height: 30px;
-            color: white;
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .feature-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 4rem 0;
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .stat-item.animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .stat-item:nth-child(2) { animation-delay: 0.1s; }
-        .stat-item:nth-child(3) { animation-delay: 0.2s; }
-        .stat-item:nth-child(4) { animation-delay: 0.3s; }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 6rem 0;
-            background: var(--bg-primary);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: white;
-            border: 2px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(30px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-card.animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .pricing-card:nth-child(2) { animation-delay: 0.1s; }
-        .pricing-card:nth-child(3) { animation-delay: 0.2s; }
-
-        .pricing-card.featured {
-            border-color: var(--primary-color);
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-
-        .pricing-badge {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .pricing-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .pricing-price {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-period {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .pricing-features li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .pricing-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .pricing-button {
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--bg-dark);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            line-height: 1.6;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbb96"] {
+                opacity: 0;
             }
-
-            .mobile-menu-toggle {
-                display: flex;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbba5"] {
+                opacity: 0;
             }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbba3"] {
+                opacity: 0;
             }
-
-            .hero-title {
-                font-size: 2.5rem;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbb2"] {
+                opacity: 0;
             }
-
-            .hero-buttons {
-                justify-content: center;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbb0"] {
+                opacity: 0;
             }
-
-            .section-title {
-                font-size: 2rem;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbbf"] {
+                opacity: 0;
             }
-
-            .features-grid {
-                grid-template-columns: 1fr;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbbd"] {
+                opacity: 0;
             }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbcd"] {
+                opacity: 0;
             }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbcb"] {
+                opacity: 0;
             }
-
-            .pricing-card.featured {
-                transform: none;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbda"] {
+                opacity: 0;
             }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbd8"] {
+                opacity: 0;
             }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 1rem;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbe7"] {
+                opacity: 0;
             }
-
-            .container {
-                padding: 0 1rem;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbe5"] {
+                opacity: 0;
             }
-
-            .hero-title {
-                font-size: 2rem;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbf4"] {
+                opacity: 0;
             }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbf2"] {
+                opacity: 0;
             }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                text-align: center;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc02"] {
+                opacity: 0;
             }
-
-            .stat-number {
-                font-size: 2rem;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc00"] {
+                opacity: 0;
             }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc0f"] {
+                opacity: 0;
             }
-        }
-
-        /* Scroll animations */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .scroll-animate.animate {
-            opacity: 1;
-            transform: translateY(0);
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc0d"] {
+                opacity: 0;
+            }
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc1c"] {
+                opacity: 0;
+            }
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc1a"] {
+                opacity: 0;
+            }
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc29"] {
+                opacity: 0;
+            }
+            html.w-mod-js:not(.w-mod-ix) [data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc27"] {
+                opacity: 0;
+            }
         }
     </style>
-</head>
-<body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="spinner"></div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Versiqo</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#contact" class="cta-button">Get Started</a>
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="mobile-menu" id="mobileMenu">
-                <ul class="mobile-nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="floating-element">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="50" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="floating-element">
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="80" height="80" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="floating-element">
-            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="30,0 60,60 0,60" fill="currentColor"/>
-            </svg>
-        </div>
-        
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Transform Your Business with Advanced AI Solutions</h1>
-                <p class="hero-subtitle">Harness the power of artificial intelligence to automate processes, gain insights, and drive innovation. Our cutting-edge AI platform delivers results that matter.</p>
-                <div class="hero-buttons">
-                    <a href="#features" class="btn-primary">Explore Features</a>
-                    <a href="#contact" class="btn-secondary">Schedule Demo</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI Technology Dashboard" />
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header scroll-animate">
-                <h2 class="section-title">Powerful AI Features</h2>
-                <p class="section-subtitle">Discover how our advanced AI capabilities can revolutionize your business operations and drive unprecedented growth.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card scroll-animate">
-                    <div class="feature-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Intelligent Automation</h3>
-                    <p class="feature-description">Streamline your workflows with AI-powered automation that learns and adapts to your business processes, reducing manual work by up to 80%.</p>
-                </div>
-                <div class="feature-card scroll-animate">
-                    <div class="feature-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Predictive Analytics</h3>
-                    <p class="feature-description">Make data-driven decisions with advanced predictive models that forecast trends, identify opportunities, and mitigate risks before they impact your business.</p>
-                </div>
-                <div class="feature-card scroll-animate">
-                    <div class="feature-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Natural Language Processing</h3>
-                    <p class="feature-description">Transform unstructured text data into actionable insights with our advanced NLP capabilities, enabling better customer understanding and content analysis.</p>
-                </div>
-                <div class="feature-card scroll-animate">
-                    <div class="feature-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Custom AI Models</h3>
-                    <p class="feature-description">Deploy tailored AI solutions built specifically for your industry and use case, ensuring maximum relevance and performance for your unique challenges.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item scroll-animate">
-                    <span class="stat-number" data-target="500">0</span>
-                    <span class="stat-label">AI Models Deployed</span>
-                </div>
-                <div class="stat-item scroll-animate">
-                    <span class="stat-number" data-target="99.9">0</span>
-                    <span class="stat-label">% Uptime Guarantee</span>
-                </div>
-                <div class="stat-item scroll-animate">
-                    <span class="stat-number" data-target="1000">0</span>
-                    <span class="stat-label">Happy Customers</span>
-                </div>
-                <div class="stat-item scroll-animate">
-                    <span class="stat-number" data-target="24">0</span>
-                    <span class="stat-label">7 Support</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-header scroll-animate">
-                <h2 class="section-title">Choose Your Plan</h2>
-                <p class="section-subtitle">Select the perfect plan for your business needs. All plans include our core AI features with varying levels of customization and support.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card scroll-animate">
-                    <h3 class="pricing-title">Starter</h3>
-                    <div class="pricing-price">$99</div>
-                    <div class="pricing-period">per month</div>
-                    <ul class="pricing-features">
-                        <li>Basic AI automation</li>
-                        <li>Up to 1,000 API calls/month</li>
-                        <li>Email support</li>
-                        <li>Standard analytics</li>
-                        <li>1 custom model</li>
-                    </ul>
-                    <button class="pricing-button">Get Started</button>
-                </div>
-                <div class="pricing-card featured scroll-animate">
-                    <div class="pricing-badge">Most Popular</div>
-                    <h3 class="pricing-title">Professional</h3>
-                    <div class="pricing-price">$299</div>
-                    <div class="pricing-period">per month</div>
-                    <ul class="pricing-features">
-                        <li>Advanced AI automation</li>
-                        <li>Up to 10,000 API calls/month</li>
-                        <li>Priority support</li>
-                        <li>Advanced analytics</li>
-                        <li>5 custom models</li>
-                        <li>Integration support</li>
-                    </ul>
-                    <button class="pricing-button">Get Started</button>
-                </div>
-                <div class="pricing-card scroll-animate">
-                    <h3 class="pricing-title">Enterprise</h3>
-                    <div class="pricing-price">$999</div>
-                    <div class="pricing-period">per month</div>
-                    <ul class="pricing-features">
-                        <li>Full AI suite</li>
-                        <li>Unlimited API calls</li>
-                        <li>24/7 dedicated support</li>
-                        <li>Custom analytics</li>
-                        <li>Unlimited custom models</li>
-                        <li>White-label solutions</li>
-                        <li>On-premise deployment</li>
-                    </ul>
-                    <button class="pricing-button">Contact Sales</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Versiqo</h3>
-                    <p>Transforming businesses with cutting-edge AI solutions. Join thousands of companies already leveraging our platform to drive innovation and growth.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Twitter">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="GitHub">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Product</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">API Documentation</a></li>
-                        <li><a href="#">Integrations</a></li>
-                        <li><a href="#">Security</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Partners</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Status</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Versiqo. All rights reserved. Built with cutting-edge AI technology.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Loading screen
-        window.addEventListener('load', function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-            }, 1000);
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuToggle.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                // Close mobile menu if open
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all scroll-animate elements
-        document.querySelectorAll('.scroll-animate').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Animated counters
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            function updateCounter() {
-                start += increment;
-                if (start < target) {
-                    element.textContent = Math.floor(start);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target;
-                }
-            }
-            
-            updateCounter();
-        }
-
-        // Trigger counter animations when stats section is visible
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.stat-number');
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-target'));
-                        animateCounter(counter, target);
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
-
-        // Add parallax effect to hero background
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Add hover effects to pricing cards
-        document.querySelectorAll('.pricing-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                if (this.classList.contains('featured')) {
-                    this.style.transform = 'scale(1.05)';
-                } else {
-                    this.style.transform = 'translateY(0) scale(1)';
-                }
-            });
-        });
-
-        // Add ripple effect to buttons
-        document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button, .pricing-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s ease-out;
-                    pointer-events: none;
-                `;
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-
-        // Add ripple animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Throttled scroll handler for performance
-        let ticking = false;
-        function updateScrollEffects() {
-            // Add any scroll-based animations here
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                requestAnimationFrame(updateScrollEffects);
-                ticking = true;
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: ["Bitter:400,700,400italic", "Varela:400", "Inter:100,300,regular,500,600,700,100italic,300italic,italic,500italic,600italic,700italic"]
             }
         });
     </script>
+    <script type="text/javascript">
+        ! function(o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    <link href="https://cdn.prod.website-files.com/686629ace1541d797a163149/686771bdb0eab49482992677_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt-32x32.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://cdn.prod.website-files.com/686629ace1541d797a163149/686771a98c3ea59bc8ca6164_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt-256x256.png" rel="apple-touch-icon" />
+<style>
+      .w-webflow-badge {
+        display: none !important;
+      }
+    </style>
+</head>
+
+<body>
+    <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" data-w-id="06ab6c64-468c-b44e-1b8c-856deb96ba7f" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1).png" loading="lazy" width="80" height="80" alt="" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1)-p-500.png 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1)-p-800.png 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1).png 949w"
+            sizes="80px" />
+        <div class="nav-container w-container">
+            <nav role="navigation" class="nav-menu w-nav-menu">
+                <div class="nav-link-wrapper"><a href="/" aria-current="page" class="nav-link w-nav-link w--current">Home</a><a href="/" aria-current="page" class="nav-link move-down hide-on-tab w-nav-link w--current">Home</a></div>
+                <div class="nav-link-wrapper"><a href="#" class="nav-link w-nav-link">About</a><a href="#" class="nav-link move-down hide-on-tab w-nav-link">About</a></div>
+                <div class="nav-link-wrapper"><a href="#" class="nav-link move-down hide-on-tab w-nav-link">Works</a></div>
+                <div class="nav-link-wrapper"><a href="/contact" class="nav-link w-nav-link">Contact</a><a href="/contact" class="nav-link move-down hide-on-tab w-nav-link">Contact</a></div>
+            </nav>
+            <div class="menu-button w-nav-button">
+                <div class="burger-icon w-icon-nav-menu"></div>
+            </div>
+        </div>
+    </div>
+    <section class="hero-section">
+        <div class="fingerprint"></div>
+        <div class="circle"></div>
+        <div class="w-layout-blockcontainer container w-container">
+            <div class="hero-wrapper">
+                <h5 class="heading">Welcome</h5>
+                <h1 class="hero-text">Versico</h1>
+                <a href="#brands" class="arrow-border-wrapper w-inline-block">
+                    <div data-w-id="022bdf7a-1da5-487f-e90a-10a13619b2dd" class="icon-wrapper"><img width="Auto" height="Auto" alt="arrow up" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686629ace1541d797a1631e1_arrow_outward.svg" loading="eager" data-w-id="022bdf7a-1da5-487f-e90a-10a13619b2de" class="arrow"
+                        /></div>
+                </a>
+            </div>
+            <div class="hero-overlay"></div>
+            <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" data-w-id="06ab6c64-468c-b44e-1b8c-856deb96ba7f" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1).png" loading="lazy" width="80" height="80" alt="" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1)-p-500.png 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1)-p-800.png 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68664ffcba32e72207f7f3fc_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(1).png 949w"
+                    sizes="80px" />
+                <div class="nav-container w-container">
+                    <nav role="navigation" class="nav-menu w-nav-menu">
+                        <div class="nav-link-wrapper"><a href="/" aria-current="page" class="nav-link w-nav-link w--current">Home</a><a href="/" aria-current="page" class="nav-link move-down hide-on-tab w-nav-link w--current">Home</a></div>
+                        <div class="nav-link-wrapper"><a href="#" class="nav-link w-nav-link">About</a><a href="#" class="nav-link move-down hide-on-tab w-nav-link">About</a></div>
+                        <div class="nav-link-wrapper"><a href="#" class="nav-link move-down hide-on-tab w-nav-link">Works</a></div>
+                        <div class="nav-link-wrapper"><a href="/contact" class="nav-link w-nav-link">Contact</a><a href="/contact" class="nav-link move-down hide-on-tab w-nav-link">Contact</a></div>
+                    </nav>
+                    <div class="menu-button w-nav-button">
+                        <div class="burger-icon w-icon-nav-menu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-w-id="769eaa28-9e57-8d2b-bd19-a0fd96681ba3" style="opacity:0" class="spline" data-animation-type="spline" data-spline-url="https://prod.spline.design/fP0LH65i8bXQDQjZ/scene.splinecode"><canvas></canvas></div>
+    </section>
+    <section id="brands" class="section">
+        <div class="w-layout-blockcontainer container padding-4-5rem w-container"></div>
+    </section>
+    <div data-w-id="c0e2f789-3698-9dfa-1a86-5a69e48b275c" style="opacity:0" class="spark-section">
+        <div class="waves---section-medium">
+            <div class="waves---main-container w-container">
+                <div data-w-id="25718acb-776f-04c2-8504-4ca038c6b7c7" style="opacity:0" class="waves-master-testimonial-4">
+                    <div class="w-layout-grid waves-grid-testimoials-4"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686768a82f6f78b1623852f3_d001f01d834c6a04f78e98e7090e6886_Gal%204.webp" loading="lazy" id="w-node-_25718acb-776f-04c2-8504-4ca038c6b7c9-7a1631a4" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940px"
+                            alt="" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/686768a82f6f78b1623852f3_d001f01d834c6a04f78e98e7090e6886_Gal%25204-p-500.jpg 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/686768a82f6f78b1623852f3_d001f01d834c6a04f78e98e7090e6886_Gal%25204-p-800.jpg 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/686768a82f6f78b1623852f3_d001f01d834c6a04f78e98e7090e6886_Gal%25204-p-1080.jpg 1080w, https://cdn.prod.website-files.com/686629ace1541d797a163149/686768a82f6f78b1623852f3_d001f01d834c6a04f78e98e7090e6886_Gal%204.webp 1090w"
+                            class="waves-image-testiomnial-4" />
+                        <div id="w-node-_25718acb-776f-04c2-8504-4ca038c6b7ca-7a1631a4" class="waves-right-testimonial-4"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686629ace1541d797a1632ea_fingerprint.svg" loading="lazy" width="Auto" height="Auto" alt="fingerprint icon" class="waves-logo-testimonial-4" />
+                            <div class="waves---testimonial-text-big"><strong><br/>Versico </strong>is a solo-built student support system offering emotional clarity, daily structure, career roadmaps, and real doubt-solving. It gently supports students dealing with difficult home dynamics, overthinking,
+                                and life confusion through calm tools, personal guidance, and minimalist systems for a more focused, peaceful student life<strong>.</strong></div>
+                            <div class="waves-bottom-testimonial-4">
+                                <div class="waves-name-wrap-testimonial-4">
+                                    <div class="waves---heading-3-no-margins">Rushal</div>
+                                    <div class="waves---paragraph-big">Founder<br/>Student at IIM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div class="w-layout-blockcontainer container w-container">
+            <div data-w-id="4bf48e95-1b6f-5737-3242-d95977d5bf77" class="works-title-wrapper">
+                <h2 class="works-title">My Works</h2>
+                <h2 class="works-title outline-white">My Works</h2>
+                <h2 class="works-title">My Works</h2>
+                <h2 class="works-title outline-white">My Works</h2>
+            </div>
+        </div>
+    </section>
+    <section data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbb8f" style="opacity:0" class="rt-component-section rt-overflow-hidden">
+        <section class="section background-black">
+            <div class="w-layout-blockcontainer container overflow w-container">
+                <div class="space-4rem"></div>
+            </div>
+        </section>
+        <div class="w-layout-blockcontainer rt-component-container w-container">
+            <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbb91" class="rt-home-four-my-work-marquee">
+                <div class="rt-home-four-my-work-marquee-main">
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbb94" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp" width="450" height="518" alt="project" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbb95-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbb96-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbb96" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbb97-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbb98"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Versico Service</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">Student Space</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbba1" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp" width="450" height="518" alt="" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbba2-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbba3-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbba3" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbba4-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbba5"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Versico Service</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">Daily System</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbae" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp" width="450" height="518" alt="" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbaf-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbb0-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbb0" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbb1-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbb2"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Versico Service</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">Ask &amp; Counselling</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbbb" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp" width="450" height="518" alt="laptop image" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbbc-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbbd-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbbd" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbbe-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbbf"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Versico Service</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">Career Tools</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="rt-home-four-my-work-marquee-main">
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbc9" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp" width="450" height="518" alt="project" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbca-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbcb-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbcb" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbcc-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbcd"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Development</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">DAS API &amp; compression</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbd6" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp" width="450" height="518" alt="" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbd7-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbd8-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbd8" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbd9-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbda"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Development</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">Webflow development</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbe3" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp" width="450" height="518" alt="" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbe4-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbe5-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbe5" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbe6-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbe7"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Development</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">PHP development</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbf0" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp" width="450" height="518" alt="laptop image" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbf1-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbf2-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbf2" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbf3-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbf4"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Development</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">Python development</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="rt-home-four-my-work-marquee-main">
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbbfe" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp" width="450" height="518" alt="project" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbbff-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99582_5f5a62cdd9131f59803decce8b4fe0ca_img%20(3).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc00-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc00" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc01-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc02"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Development</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">DAS API &amp; compression</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc0b" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp" width="450" height="518" alt="" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc0c-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957e_834ad156bc3065ffad5ec54963671402_img%20(4).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc0d-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc0d" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc0e-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc0f"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Development</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">Webflow development</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc18" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp" width="450" height="518" alt="" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc19-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e9957a_68e08c97fe3579e398b7b652d6be7d3e_img%20(5).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc1a-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc1a" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc1b-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc1c"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Development</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">PHP development</div>
+                        </div>
+                    </a>
+                    <a href="#" class="rt-home-four-my-work-marquee-block rt-underline-off w-inline-block">
+                        <div data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc25" class="rt-home-four-my-work-marquee-image"><img class="rt-autofit-3" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp" width="450" height="518" alt="laptop image" sizes="(max-width: 479px) 100vw, 450px"
+                                id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc26-7a1631a4" loading="lazy" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99576_731a875cdb7d9bc732e02fbdbcfc0b52_img%20(6).webp 900w"
+                            />
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc27-7a1631a4" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc27" class="rt-my-work-marquee-overlay"></div>
+                            <div id="w-node-_8950712e-5378-d7d9-89dc-f2186c3fbc28-7a1631a4"><img width="61" height="60" alt="Stroke Arrow" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68694e21ffbe7e9ce3e99575_1d12db760c21fbabec2eab5bda6583fe_Stroke%20Arrow.svg" loading="lazy" data-w-id="8950712e-5378-d7d9-89dc-f2186c3fbc29"
+                                    class="rt-project-arrow" /></div>
+                        </div>
+                        <div class="rt-padding-top-thirty">
+                            <div class="rt-my-work-category">
+                                <div class="rt-grey-dot"></div>
+                                <div class="rt-body-font-color">Development</div>
+                            </div>
+                            <div class="rt-category-cards-text rt-text-center">Python development</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div data-w-id="3cf11903-91ee-1065-e414-d28ce177953d" style="opacity:0" class="waves---section-medium">
+            <div class="waves---main-container w-container">
+                <div class="w-layout-grid waves---grid-halves-sticky">
+                    <div id="w-node-_3cf11903-91ee-1065-e414-d28ce1779540-7a1631a4" class="waves---sticky-halves-left">
+                        <div class="waves---sticky-halves">
+                            <div class="waves---content-sticky-features-2">
+                                <h2 class="waves---heading-2-no-margins">WHAT WE OFFER </h2>
+                                <div class="waves---paragraph-big">A minimal, all-in-one space for students  combining daily planning, career clarity, and emotional balance in the simplest way possible.A simple space for student life  routines, clarity, and support in one place<br/><br/>‍<br/><strong><sub>Founded By Rushal </sub></strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="w-node-_3cf11903-91ee-1065-e414-d28ce177954a-7a1631a4" class="waves---master-tiles-features-2">
+                        <div class="waves-tile-features-2">
+                            <div class="waves---mg-bottom-16"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686765ccc37633fec3bb1899_e51c93d2feff3c63030f971a20bba0a9_Waves%20Icon.svg" loading="lazy" alt="" class="waves-icon-32" /></div>
+                            <h1 class="waves---heading-3-no-margins">Student Space</h1>
+                            <div class="text-block"><strong>Your personal zone to reflect, reset, and process thoughts. Built for emotional clarity, self-awareness, and handling tough moments calmly.</strong></div>
+                        </div>
+                        <div class="waves-tile-features-2">
+                            <div class="waves---mg-bottom-16"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686765ccc37633fec3bb1899_e51c93d2feff3c63030f971a20bba0a9_Waves%20Icon.svg" loading="lazy" alt="" class="waves-icon-32" /></div>
+                            <h1 class="waves---heading-3-no-margins">Career Tools</h1>
+                            <div class="text-block-3"><strong>Stay organized without the overwhelm. Plan your day, track habits, and build routines that keep you grounded and focused.lear roadmaps, skill guides, and decision support  helping you move confidently from confusion to direction in your career journey.</strong></div>
+                        </div>
+                        <div class="waves-tile-features-2">
+                            <div class="waves---mg-bottom-16"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686765ccc37633fec3bb1899_e51c93d2feff3c63030f971a20bba0a9_Waves%20Icon.svg" loading="lazy" alt="" class="waves-icon-32" /></div>
+                            <h1 class="waves---heading-3-no-margins"><strong>Ask Any Doubt With Career Counselling</strong></h1>
+                            <div class="text-block-2"><strong>Ask real-life doubts — from studies to life struggles — and get thoughtful, human responses tailored just for you.</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="w-layout-blockcontainer container padding-9rem w-container">
+                <div class="space-7rem"></div>
+                <div class="metrics-wrapper">
+                    <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddef3" class="metrics-block">
+                        <h2 class="metrics-text">87</h2>
+                        <p>Students Guided</p>
+                    </div>
+                    <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddef8" class="metrics-block">
+                        <h2 class="metrics-text">42</h2>
+                        <p>5-star Refelections</p>
+                    </div>
+                    <div data-w-id="a546ec61-5762-16bd-4aea-b274da1ddefd" class="metrics-block">
+                        <h2 class="metrics-text">69</h2>
+                        <p>Custom Systems Built</p>
+                    </div>
+                </div>
+                <div class="space-7rem"></div>
+            </div>
+        </section>
+    </section>
+    <section data-w-id="7ec3b923-a2ca-adaf-de58-ed2ee18ccddb" style="opacity:0" class="pricing-comparison">
+        <div class="container-2">
+            <div class="pricing-wrapper">
+                <div id="w-node-_7ec3b923-a2ca-adaf-de58-ed2ee18ccdde-7a1631a4" class="pricing-card"><img src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124a28a812aad9_placeholder%202.svg" loading="lazy" alt="" class="pricing-image" />
+                    <h2 class="pricing-title">Starter</h2>
+                    <div class="pricing-subtitle">Starting at</div>
+                    <div class="pricing-price">₹99</div>
+                    <div class="paragraph-regular margin-bottom-20">A gentle entry into structured student life.</div><a href="mailto:rushal111@gmail.com?subject=Starter%20details" class="button-primary outline-button w-button">Talk to an Expert</a>
+                    <div class="pricing-divider"></div>
+                    <ul role="list" class="pricing-feature-list w-list-unstyled">
+                        <li>
+                            <div class="pricing-feature">Basic <strong>Daily System</strong></div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Starter <strong>Student Space</strong></div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">1 <strong>Ask &amp; Reflect</strong> doubt/month</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Monthly email tips + micro-guides</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Guided Weekly Planner Template</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Focus Session Timer</div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="w-node-_7ec3b923-a2ca-adaf-de58-ed2ee18ccdfe-7a1631a4" class="pricing-card featured-pricing"><img src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124a867e12aade_portfolio%201%20-%20wide.svg" loading="lazy" alt="" class="pricing-image" />
+                    <h2 class="pricing-title">Core</h2>
+                    <div class="pricing-subtitle">Starting at</div>
+                    <div class="pricing-price">₹149</div>
+                    <div class="paragraph-regular margin-bottom-20">Clarity across life, learning, and mindset.</div><a href="mailto:rushal111r@gmail.com?subject=Core%20details" class="button-primary w-button">Talk to an Expert</a>
+                    <div class="pricing-divider"></div>
+                    <ul role="list" class="pricing-feature-list w-list-unstyled">
+                        <li>
+                            <div class="pricing-feature"><strong><em>Everything in Starter </em></strong></div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Full <strong>Student Space</strong> (emotional dump tool, overthinking guide, family scripts)</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Full <strong>Daily System</strong> dashboard</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Access to <strong>Career Tools</strong></div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Ask &amp; Reflect (3 questions/month with personal reply)</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Life Reset” Starter Kit</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Self-Evaluation Quiz</div>
+                        </li>
+                    </ul>
+                    <div class="pricing-tag">Recommended</div>
+                </div>
+                <div id="w-node-_7ec3b923-a2ca-adaf-de58-ed2ee18cce26-7a1631a4" class="pricing-card"><img src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124a55c612aae2_portfolio%202%20-%20wide.svg" loading="lazy" alt="" class="pricing-image" />
+                    <h2 class="pricing-title"><strong>Pro</strong></h2>
+                    <div class="pricing-subtitle">Starting at</div>
+                    <div class="pricing-price">₹499</div>
+                    <div class="paragraph-regular margin-bottom-20">For the student building more than just a degree.</div><a href="mailto:rushal111r@gmail.com?subject=Pro%20Details" class="button-primary outline-button w-button">Talk to an Expert</a>
+                    <div class="pricing-divider"></div>
+                    <ul role="list" class="pricing-feature-list w-list-unstyled">
+                        <li>
+                            <div class="pricing-feature"><strong><em>Everything in Core +</em></strong></div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Unlimited Ask &amp; Reflect (lifetime inbox access)</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Priority replies within 24-48 hours</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Future Career Builder Kit (resume builder, email scripts, real-world planner)</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Early access to new features &amp; modules</div>
+                        </li>
+                        <li>
+                            <div class="pricing-feature">Priority access to new features</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-w-id="7383da02-b6f6-6f48-5f62-04aec12155d4" style="opacity:0" class="spark-section-2">
+            <div class="spark-container-2 w-container">
+                <div class="spark-900-width spark-margin-bottom-104px">
+                    <h2><sub>You Have Questions</sub><br/>We have answers</h2>
+                </div>
+                <div data-hover="false" data-delay="250" data-w-id="7383da02-b6f6-6f48-5f62-04aec12155dd" class="spark-faq-expander w-dropdown">
+                    <div class="spark-faq-button w-dropdown-toggle">
+                        <div class="spark-faq-plus-to-x">
+                            <div class="spark-horizontal-line"></div>
+                            <div class="spark-vertical-line"></div>
+                        </div>
+                        <div class="spark-button-text">What is Versico actually meant for?</div>
+                    </div>
+                    <nav style="height:0px" class="spark-faq-dropdown w-dropdown-list">
+                        <p class="spark-dropdown-text">Versico helps students manage their day-to-day — from routines and tasks to career planning, budgeting, and personal wellness. It&#x27;s built to reduce overwhelm and bring structure to student life.</p>
+                    </nav>
+                </div>
+                <div data-hover="false" data-delay="250" data-w-id="7383da02-b6f6-6f48-5f62-04aec12155e7" class="spark-faq-expander w-dropdown">
+                    <div class="spark-faq-button w-dropdown-toggle">
+                        <div class="spark-faq-plus-to-x">
+                            <div class="spark-horizontal-line"></div>
+                            <div class="spark-vertical-line"></div>
+                        </div>
+                        <div class="spark-button-text">Do I need to set it up myself?</div>
+                    </div>
+                    <nav style="height:0px" class="spark-faq-dropdown w-dropdown-list">
+                        <p class="spark-dropdown-text">No. Unlike other platforms where you build from scratch, Versico gives you pre-designed systems tailored for students. You can start using it straight away — no setup stress.</p>
+                    </nav>
+                </div>
+                <div data-hover="false" data-delay="250" data-w-id="7383da02-b6f6-6f48-5f62-04aec12155f1" class="spark-faq-expander w-dropdown">
+                    <div class="spark-faq-button w-dropdown-toggle">
+                        <div class="spark-faq-plus-to-x">
+                            <div class="spark-horizontal-line"></div>
+                            <div class="spark-vertical-line"></div>
+                        </div>
+                        <div class="spark-button-text">How is this different from other productivity or planning apps?</div>
+                    </div>
+                    <nav style="height:0px" class="spark-faq-dropdown w-dropdown-list">
+                        <p class="spark-dropdown-text">Most apps focus on just one thing — notes, schedules, or money. Versico brings it all together in one place, designed specifically for student needs, so you don’t have to juggle between five different tools.</p>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="w-layout-blockcontainer container padding-9rem w-container">
+                <div data-w-id="6e9750ff-a872-9aa1-2869-bd0dc16b00f1" class="cta-block">
+                    <div class="cta-text-block">
+                        <h5>Contact me</h5>
+                        <div class="flex">
+                            <h2 data-w-id="6e9750ff-a872-9aa1-2869-bd0dc16b00f6" class="cta-large">GET IN</h2><img data-w-id="6e9750ff-a872-9aa1-2869-bd0dc16b00f8" loading="eager" alt="icon" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686629ace1541d797a1631df_arrow_out.svg" class="arrow-image-small"
+                            /></div>
+                        <h2 data-w-id="6e9750ff-a872-9aa1-2869-bd0dc16b00f9" class="cta-large outline-white">TOUCH</h2>
+                    </div>
+                    <a href="mailto:rushal111r@gmail.com?subject=Versiqo%20Info" data-w-id="3beb919a-4aaa-f885-16a0-1c9b6601a3ec" class="button-with-circle-icon button-light w-inline-block">
+                        <p class="button-text">Contact</p>
+                        <p class="button-text-absolute">Contact</p>
+                        <div class="button-arrow-wrapper button-light"><img width="Auto" height="Auto" alt="" src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686629ace1541d797a1631e1_arrow_outward.svg" loading="eager" class="arrow invert" /></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <div class="lynx-footer"></div>
+    </section>
+    <div class="lynx-block-footer-center">
+        <div class="lynx-text-footer">© 2025 Versico. All Rights Reserved. </div><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/686955f056431f77dd651859_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(3).png" loading="lazy" width="200" height="26"
+            alt="" srcset="https://cdn.prod.website-files.com/686629ace1541d797a163149/686955f056431f77dd651859_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(3)-p-500.png 500w, https://cdn.prod.website-files.com/686629ace1541d797a163149/686955f056431f77dd651859_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(3)-p-800.png 800w, https://cdn.prod.website-files.com/686629ace1541d797a163149/686955f056431f77dd651859_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(3)-p-1080.png 1080w, https://cdn.prod.website-files.com/686629ace1541d797a163149/686955f056431f77dd651859_Black%20White%20Illustrated%20Fly%20High%20Quotes%20T-Shirt%20(3).png 1556w"
+            sizes="200px" class="lynx-logo-footer-center" /><a href="#" class="lynx-link-footer">Registered under MSME Govt. Of India<br/></a></div>
+    <div class="lynx-social"><a href="#" class="lynx-link-block w-inline-block"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68695394c417f8efc5b235f4_382491960c00240fd097317908f25922_Facebook.svg" loading="lazy" alt="" class="lynx-icon-social"/></a>
+        <a
+            href="#" class="lynx-link-block w-inline-block"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68695394c417f8efc5b235f3_ea0e5dbe77972250b03597c62b9f69f5_Twitter.svg" loading="lazy" alt="" class="lynx-icon-social" /></a><a href="#" class="lynx-link-block w-inline-block"><img src="https://cdn.prod.website-files.com/686629ace1541d797a163149/68695394c417f8efc5b235f2_bea10255065f6e01fdef0c9fc51fe5d6_Instagram.svg" loading="lazy" alt="" class="lynx-icon-social"/></a></div>
+    <script
+        src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=686629ace1541d797a163149" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="https://cdn.prod.website-files.com/686629ace1541d797a163149/js/webflow.schunk.57d5559d2f0cd9f8.js" type="text/javascript"></script>
+        <script src="https://cdn.prod.website-files.com/686629ace1541d797a163149/js/webflow.schunk.f50b1e26b9528921.js" type="text/javascript"></script>
+        <script src="https://cdn.prod.website-files.com/686629ace1541d797a163149/js/webflow.1600acee.68e9b184fcf4b1de.js" type="text/javascript"></script>
 </body>
+
 </html>
